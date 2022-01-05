@@ -22,7 +22,7 @@ locationBtn.addEventListener('click', () => {
 
 function onSuccess(position) {
     const { latitude, longitude } = position.coords;
-    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5812987bf8b1654533fc202712305685`
+    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=5812987bf8b1654533fc202712305685`
     fetchData();
 }
 
@@ -32,7 +32,7 @@ function onError(error) {
 }
 
 function requestApi(city) {
-    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5812987bf8b1654533fc202712305685`;
+    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=5812987bf8b1654533fc202712305685`;
     fetchData();
 }
 
@@ -48,6 +48,18 @@ function weatherDetails(info) {
         infoTxt.innerText = `${inputField.value} isn't a valid city name`;
         infoTxt.classList.replace('pending', 'error');
     } else {
+        const city = info.name;
+        const country = info.sys.country;
+        const { description, id } = info.weather[0];
+        const { feels_like, humidity, temp } = info.main;
+
+        wrapper.querySelector('.temp .numb').innerText = Math.floor(temp);
+        wrapper.querySelector('.weather').innerText = description;
+        wrapper.querySelector('.location span').innerText = `${city}, ${country}`;
+        wrapper.querySelector('.temp .numb-2').innerText = Math.floor(feels_like);
+        wrapper.querySelector('.humidity span').innerText = `${humidity}%`;
+
+
         infoTxt.classList.remove('pending', 'error');
         wrapper.classList.add('active');
         console.log(info);
