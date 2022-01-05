@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #43affc;
+}
+
+.wrapper {
+    width: 40rem;
+    border-radius: 0.7rem;
+    background: #fff;
+}
+
+.wrapper header {
+    color: #43affc;
+    font-size: 2.1rem;
+    font-weight: 500;
+    padding: 1.6rem 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1rem solid #bfbfbf;
+}
+
+header i {
+    cursor: pointer;
+    font-size: 1.6rem;
+    margin-right: 0.8rem;
+}
+
+.wrapper .input-part {
+    margin: 2rem 2.5rem 3rem;
+    font-size: 2.3rem;
+}
+
+.input-part .info-txt {
+    display: none;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1.2rem 1rem;
+    border-radius: 0.7rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-txt.error {
+    display: block;
+    color: #721c24;
+    background: #f8d7da;
+    border: 0.1rem solid #f5c6cb;
+}
+
+.info-txt.pending {
+    display: block;
+    color: #0c5460;
+    background: #d1ecf1;
+    border: 0.1rem solid #bee5eb;
+}
+
+.input-part :where(input, button) {
+    width: 100%;
+    height: 5.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.7rem;
+}
+
+.input-part input {
+    text-align: center;
+    border: 0.1rem solid #bfbfbf;
+}
+
+.input-part input:is(:focus, :valid) {
+    border: 0.2rem solid #43affc;
+}
+
+.input-part .separator {
+    height: 0.1rem;
+    width: 100%;
+    margin: 2.5rem 0;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.separator::before {
+    content: 'or';
+    color: #ccc;
+    font-size: 1.6rem;
+    padding: 0 1.5rem;
+    background: #fff;
+}
+
+.input-part button {
+    color: #fff;
+    cursor: pointer;
+    background: #43affc;
+}
