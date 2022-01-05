@@ -69,9 +69,14 @@ function weatherDetails(info) {
             wIcon.src = 'images/rain.png';
         }
 
+
+        let getCountryNames = new Intl.DisplayNames(['en'], { type: 'region' });
+        const fullnameCountry = getCountryNames.of(country);
+
+
         wrapper.querySelector('.temp .numb').innerText = Math.floor(temp);
         wrapper.querySelector('.weather').innerText = description;
-        wrapper.querySelector('.location span').innerText = `${city}, ${country}`;
+        wrapper.querySelector('.location span').innerText = `${city}, ${fullnameCountry}`;
         wrapper.querySelector('.temp .numb-2').innerText = Math.floor(feels_like);
         wrapper.querySelector('.humidity span').innerText = `${humidity}%`;
 
