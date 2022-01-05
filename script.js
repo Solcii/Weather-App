@@ -2,7 +2,8 @@ const wrapper = document.querySelector('.wrapper'),
     inputPart = wrapper.querySelector('.input-part'),
     infoTxt = inputPart.querySelector('.info-txt'),
     inputField = inputPart.querySelector('input'),
-    locationBtn = inputPart.querySelector('button');
+    locationBtn = inputPart.querySelector('button'),
+    wIcon = document.querySelector('.weather-part img');
 
 let api;
 
@@ -52,6 +53,20 @@ function weatherDetails(info) {
         const country = info.sys.country;
         const { description, id } = info.weather[0];
         const { feels_like, humidity, temp } = info.main;
+
+        if (id == 800) {
+            wIcon.src = 'images/clear.png';
+        } else if (id >= 200 && id <= 232) {
+            wIcon.src = 'images/storm.png';
+        } else if (id >= 600 && id <= 622) {
+            wIcon.src = 'images/snow.png';
+        } else if (id >= 701 && id <= 781) {
+            wIcon.src = 'images/haze.png';
+        } else if (id >= 801 && id <= 804) {
+            wIcon.src = 'images/cloud.png';
+        } else if ((id >= 300 && id <= 321) || (id >= 500 && id <= 531)) {
+            wIcon.src = 'images/rain.png';
+        }
 
         wrapper.querySelector('.temp .numb').innerText = Math.floor(temp);
         wrapper.querySelector('.weather').innerText = description;
